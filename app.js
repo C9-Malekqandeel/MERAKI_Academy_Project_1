@@ -5,7 +5,7 @@ const boxPlay = [
 ]
 
 let current = "O"
-let continuePlay = true;
+let continuePlay = false;
 
 const render = (boxPlay)=>{
  for(let i = 0; i<3;i++){
@@ -19,9 +19,10 @@ const render = (boxPlay)=>{
         box.addEventListener('click', ()=>{
             if(box.innerText === ""){
                 box.innerText = current
+                boxPlay[i][ind]= current
                 current =changeplay()
                 checkWin(boxPlay)
-                if(continuePlay){
+                if(!continuePlay){
                     document.querySelector('#status').innerText = "Turn For    " + current
                 }
             }
@@ -35,24 +36,32 @@ const changeplay = ()=>{
 }
 
 const checkWin = (boxPlay)=>{
-    for (let index = 0; index < boxPlay.length; index++) {
-        if (boxPlay[index][0] === boxPlay[index][1] && boxPlay[index][0] === boxPlay[index][2] && boxPlay[index][0] !== ""){
-            document.querySelector('#status').innerText = current + "is Win"
-            continuePlay = false
+
+    console.log(boxPlay);
+   for (let index = 0; index < boxPlay.length; index++) {
+    console.log(boxPlay[index][1]);
+        if (boxPlay[index][0] === boxPlay[index][1] && boxPlay[index][1] === boxPlay[index][2] && boxPlay[index][0] !== ""){
+            document.querySelector('#status').innerText = changeplay() + "    is Win"
+            continuePlay = true
         
         } else if (boxPlay[0][index] === boxPlay[1][index] && boxPlay[0][index] === boxPlay[2][index] && boxPlay[0][index] !== ""){
-            document.querySelector('#status').innerText = current + "is Win"
-            continuePlay = false
+            document.querySelector('#status').innerText = changeplay() + "    is Win"
+            continuePlay = true
         }
     }
 
-    if (boxPlay[0][0]=== boxPlay[1][1]&& boxPlay[1][1]=== boxPlay[2][2] && boxPlay[0][0]!== ""){
-        document.querySelector('#status').innerText = current + "is Win"
-        continuePlay = false
+    if (boxPlay[0][0]=== boxPlay[1][1]&& boxPlay[1][1]=== boxPlay[2][2] && boxPlay[0][0] && boxPlay[0][0] !== ""){
+        document.querySelector('#status').innerText = changeplay() + "    is Win"
+        continuePlay = true
+    } else if ( boxPlay[0][2] === boxPlay[1][1]&& boxPlay[1][1] === boxPlay[2][0] && boxPlay[0][2]!==""){
+        document.querySelector('#status').innerText = changeplay() + "    is Win"
+            continuePlay = true
     }
     
-
 }
+
+
+
 
 
 render(boxPlay)
