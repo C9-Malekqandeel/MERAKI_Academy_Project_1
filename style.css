@@ -7,6 +7,8 @@ h1 {
     display: flex;
     justify-content: center;
     color:rgb(116, 91, 91);
+    background-color: yellowgreen;
+    padding: 8px;
 }
 .center_part {
     display: flex;
@@ -33,4 +35,20 @@ h1 {
 .Box:hover{
     background-color: rgb(157, 218, 17);
 
+}
+
+h2{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: azure;
+    border-style: double;
+    border-radius: 30%;
+    align-self: center;
+}
+
+#restart {
+    background: #95bd1c;
+    width: 100px;
+    height: 40px;
+    border-radius: 25%;
+    font-family: math;
 }
