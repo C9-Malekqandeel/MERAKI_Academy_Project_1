@@ -14,14 +14,16 @@ h1 {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    row-gap: 20px;
+    column-gap: 30px;
 
 }
 .content {
     display: grid;
     grid-template-columns: repeat(3,100px);
     grid-template-rows: repeat(3,100px);
-    row-gap: 4px;
-    column-gap: 4px;
+    row-gap: 5px;
+    column-gap: 5px;
     justify-content: center;
 }
 .Box {
@@ -65,11 +67,13 @@ h2{
  font-weight: 800;
  font-style:oblique;
  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
- border-bottom: 5px solid yellow;
+ border-bottom: 8px solid yellow;
  display: flex;
  justify-content: center;
  background-color: antiquewhite;
  background-clip: content-box;
+ margin-left: 10%; 
+ margin-right: 10%;
 }
 
 
