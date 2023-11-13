@@ -4,7 +4,8 @@ const boxPlay = [
     ["","",'']
 ]
 
-let current = "X"
+let current = "O"
+let continuePlay = true;
 
 const render = (boxPlay)=>{
  for(let i = 0; i<3;i++){
@@ -16,23 +17,53 @@ const render = (boxPlay)=>{
         box.style.fontSize="80px"
         box.innerText = boxPlay[i][ind]
         box.addEventListener('click', ()=>{
-            if(box.innerText == ""){
+            if(box.innerText === ""){
                 box.innerText = current
-                changeplay()
-                checkWin()
+                current =changeplay()
+                checkWin(boxPlay)
+                if(continuePlay){
+                    document.querySelector('#status').innerText = "Turn For    " + current
+                }
             }
         })
     }
  }
 }
 
+const changeplay = ()=>{
+    return current === "X"? "O" :"X"
+}
+
+const checkWin = (boxPlay)=>{
+    for (let index = 0; index < boxPlay.length; index++) {
+        if (boxPlay[index][0] === boxPlay[index][1] && boxPlay[index][0] === boxPlay[index][2] && boxPlay[index][0] !== ""){
+            document.querySelector('#status').innerText = current + "is Win"
+            continuePlay = false
+        
+        } else if (boxPlay[0][index] === boxPlay[1][index] && boxPlay[0][index] === boxPlay[2][index] && boxPlay[0][index] !== ""){
+            document.querySelector('#status').innerText = current + "is Win"
+            continuePlay = false
+        }
+    }
+
+    if (boxPlay[0][0]=== boxPlay[1][1]&& boxPlay[1][1]=== boxPlay[2][2] && boxPlay[0][0]!== ""){
+        document.querySelector('#status').innerText = current + "is Win"
+        continuePlay = false
+    }
+    
+
+}
+
+
 render(boxPlay)
+
 
 
 // [i][0]===[1]===[2]
 // [0][0]===[1][0]===[2][0]
 // [0][1]===[1][1]===[2][1]
 // [0][2]===[1][2]===[2][2]
+
 
 
 
