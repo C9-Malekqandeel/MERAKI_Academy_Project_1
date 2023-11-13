@@ -43,6 +43,8 @@ const checkWin = (boxPlay)=>{
         if (boxPlay[index][0] === boxPlay[index][1] && boxPlay[index][1] === boxPlay[index][2] && boxPlay[index][0] !== ""){
             document.querySelector('#status').innerText = changeplay() + "    is Win"
             continuePlay = true
+            newScreen()
+            
         
         } else if (boxPlay[0][index] === boxPlay[1][index] && boxPlay[0][index] === boxPlay[2][index] && boxPlay[0][index] !== ""){
             document.querySelector('#status').innerText = changeplay() + "    is Win"
@@ -71,6 +73,19 @@ restart.addEventListener('click',()=>{
           document.querySelector('#status').innerText = "Keep fighting !"
     });
 
+
+
+const newScreen = ()=> {
+    const message = document.querySelector('.MessageWin')
+    console.log(message);
+    message.classList.add('ShowWin')
+}
+
+
+const closeScreen = ()=> {
+    const message = document.querySelector('.MessageWin')
+    message.classList.remove('ShowWin')
+}
 
 
 render(boxPlay)

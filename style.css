@@ -76,4 +76,36 @@ h2{
  margin-right: 10%;
 }
 
+.MessageWin {
+  width:600px;
+  display: flex;
+  flex-direction: column;
+  border: 4px solid #f30c3e;
+  border-radius: 25%;
+  justify-content: center;
+  position: absolute;
+  background-color: #e7e9e2;
+  top:0%;
+  left: 40%;
+  /* transform: translate(-50%,-50%) scale(0.1);
+  visibility: hidden; */
+} 
+
+.MessageWin h1{
+    background-color: aliceblue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.MessageWin h2{
+    width: 250px;
+    color: rgb(245, 122, 21);
+    border-radius: 10%;
+    background-color: rgb(112, 231, 112);
+    border: none;
+}
+
+.ShowWin{
+    visibility: visible;
+    top:50%;
+    transform: translate(-50%, -50%) scale(1);
+}
 
