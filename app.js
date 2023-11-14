@@ -22,8 +22,8 @@ const render = (boxPlay)=>{
             if(box.innerText === ""){
                 box.innerText = current
                 boxPlay[i][ind]= current
-                current =changeplay()
-                checkWin(boxPlay)
+                current =changePlay()
+                checkWin(boxPlay)               
                 if(!continuePlay){
                     document.querySelector('#status').innerText = "Turn For    " + current
                 }
@@ -34,36 +34,44 @@ const render = (boxPlay)=>{
  }
 }
 
-const changeplay = ()=>{
+const changePlay = ()=>{
     return current === "X"? "O" :"X"
 }
 
+const clearBox = ()=> {
+    boxPlay.forEach(elem=>{
+        for (let index = 0; index < elem.length; index++) {
+            elem[index] = "";
+        }
+    })
+    }
+  
 const checkWin = (boxPlay)=>{
    for (let index = 0; index < boxPlay.length; index++) {
         if (boxPlay[index][0] === boxPlay[index][1] && boxPlay[index][1] === boxPlay[index][2] && boxPlay[index][0] !== ""){
-            document.querySelector('#status').innerText = changeplay() + "    is Win"
+            document.querySelector('#status').innerText = changePlay() + "    is Win"
             continuePlay = true
-           // newScreen()
+            newScreen()
             
         
         } else if (boxPlay[0][index] === boxPlay[1][index] && boxPlay[0][index] === boxPlay[2][index] && boxPlay[0][index] !== ""){
-            document.querySelector('#status').innerText = changeplay() + "    is Win"
+            document.querySelector('#status').innerText = changePlay() + "    is Win"
             continuePlay = true
-           // newScreen()
+           newScreen()
 
         }
     }
 
     if (boxPlay[0][0]=== boxPlay[1][1]&& boxPlay[1][1]=== boxPlay[2][2] && boxPlay[0][0] && boxPlay[0][0] !== ""){
-        document.querySelector('#status').innerText = changeplay() + "    is Win"
+        document.querySelector('#status').innerText = changePlay() + "    is Win"
         continuePlay = true
-       // newScreen()
+       newScreen()
 
 
     } else if ( boxPlay[0][2] === boxPlay[1][1]&& boxPlay[1][1] === boxPlay[2][0] && boxPlay[0][2]!==""){
-        document.querySelector('#status').innerText = changeplay() + "    is Win"
+        document.querySelector('#status').innerText = changePlay() + "    is Win"
             continuePlay = true
-          //  newScreen()
+           newScreen()
 
 
 
@@ -71,29 +79,31 @@ const checkWin = (boxPlay)=>{
     
 }
 
-
 const restart = document.querySelector('#restart')
 restart.addEventListener('click',()=>{
           let box = document.querySelectorAll('.Box')
           box.forEach(element => {
             element.innerText = ""
           });
+          boxPlay.forEach(element => {
+            element.forEach(elem => {
+                elem =""
+            })            
+          });
+          clearBox()
+          continuePlay = false;
           document.querySelector('#status').innerText = "Keep fighting !"
     });
 
 
-
 const newScreen = ()=> {
     const message = document.querySelector('.MessageWin')
-    document.querySelector('#newMessage').innerText = changeplay() + "    is Win"
-    console.log(message);
+    document.querySelector('#newMessage').innerText = changePlay() + "    is Win"
     message.classList.add('ShowWin')
 }
 
 
 
-//structure will be removed when we 
-/* 
 const playAgain = document.querySelector('#again');
 const closeScreen = ()=> {
     const message = document.querySelector('.MessageWin')
@@ -101,16 +111,19 @@ const closeScreen = ()=> {
     let box = document.querySelectorAll('.Box')
           box.forEach(element => {
             element.innerText = ""
+
           });
-          document.querySelector('#status').innerText = "Keep fighting !"
+    continuePlay = false;
+    document.querySelector('#status').innerText = "Keep fighting !"
+    clearBox()
+
 }
 playAgain.addEventListener('click', closeScreen)
 
 
- */
 render(boxPlay)
 
-
+console.log(boxPlay);
 
 // last funtion will be created for more features,
 // transfore to new screen will one win!
