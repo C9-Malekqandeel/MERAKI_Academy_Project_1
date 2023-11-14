@@ -8,6 +8,8 @@ let current = "O"
 let continuePlay = false;
 let clickSound = new Audio('click.wav')
 let endgame = new Audio("celebration.wav")
+let restartClick = new Audio('resart.wav')
+let clickAgain = new Audio('playAgain.mp3')
 
 const render = (boxPlay)=>{
  for(let i = 0; i<3;i++){
@@ -26,9 +28,10 @@ const render = (boxPlay)=>{
                 checkWin(boxPlay)               
                 if(!continuePlay){
                     document.querySelector('#status').innerText = "Turn For    " + current
+                    clickSound.play()
                 }
-
             }
+            clickSound.play()
         })
     }
  }
@@ -93,6 +96,7 @@ restart.addEventListener('click',()=>{
           clearBox()
           continuePlay = false;
           document.querySelector('#status').innerText = "Keep fighting !"
+          restartClick.play()
     });
 
 
@@ -100,6 +104,7 @@ const newScreen = ()=> {
     const message = document.querySelector('.MessageWin')
     document.querySelector('#newMessage').innerText = changePlay() + "    is Win"
     message.classList.add('ShowWin')
+    endgame.play()
 }
 
 
@@ -116,6 +121,7 @@ const closeScreen = ()=> {
     continuePlay = false;
     document.querySelector('#status').innerText = "Keep fighting !"
     clearBox()
+    clickAgain.play()
 
 }
 playAgain.addEventListener('click', closeScreen)
