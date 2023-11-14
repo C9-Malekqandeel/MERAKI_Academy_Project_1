@@ -6,6 +6,8 @@ const boxPlay = [
 
 let current = "O"
 let continuePlay = false;
+let clickSound = new Audio('click.wav')
+let endgame = new Audio("celebration.wav")
 
 const render = (boxPlay)=>{
  for(let i = 0; i<3;i++){
@@ -25,6 +27,7 @@ const render = (boxPlay)=>{
                 if(!continuePlay){
                     document.querySelector('#status').innerText = "Turn For    " + current
                 }
+
             }
         })
     }
@@ -36,28 +39,33 @@ const changeplay = ()=>{
 }
 
 const checkWin = (boxPlay)=>{
-
-    //console.log(boxPlay);
    for (let index = 0; index < boxPlay.length; index++) {
-    //console.log(boxPlay[index][1]);
         if (boxPlay[index][0] === boxPlay[index][1] && boxPlay[index][1] === boxPlay[index][2] && boxPlay[index][0] !== ""){
             document.querySelector('#status').innerText = changeplay() + "    is Win"
             continuePlay = true
-            newScreen()
+           // newScreen()
             
         
         } else if (boxPlay[0][index] === boxPlay[1][index] && boxPlay[0][index] === boxPlay[2][index] && boxPlay[0][index] !== ""){
             document.querySelector('#status').innerText = changeplay() + "    is Win"
             continuePlay = true
+           // newScreen()
+
         }
     }
 
     if (boxPlay[0][0]=== boxPlay[1][1]&& boxPlay[1][1]=== boxPlay[2][2] && boxPlay[0][0] && boxPlay[0][0] !== ""){
         document.querySelector('#status').innerText = changeplay() + "    is Win"
         continuePlay = true
+       // newScreen()
+
+
     } else if ( boxPlay[0][2] === boxPlay[1][1]&& boxPlay[1][1] === boxPlay[2][0] && boxPlay[0][2]!==""){
         document.querySelector('#status').innerText = changeplay() + "    is Win"
             continuePlay = true
+          //  newScreen()
+
+
 
     }
     
@@ -77,17 +85,29 @@ restart.addEventListener('click',()=>{
 
 const newScreen = ()=> {
     const message = document.querySelector('.MessageWin')
+    document.querySelector('#newMessage').innerText = changeplay() + "    is Win"
     console.log(message);
     message.classList.add('ShowWin')
 }
 
 
+
+//structure will be removed when we 
+/* 
+const playAgain = document.querySelector('#again');
 const closeScreen = ()=> {
     const message = document.querySelector('.MessageWin')
     message.classList.remove('ShowWin')
+    let box = document.querySelectorAll('.Box')
+          box.forEach(element => {
+            element.innerText = ""
+          });
+          document.querySelector('#status').innerText = "Keep fighting !"
 }
+playAgain.addEventListener('click', closeScreen)
 
 
+ */
 render(boxPlay)
 
 
