@@ -129,7 +129,19 @@ playAgain.addEventListener('click', closeScreen)
 
 render(boxPlay)
 
-console.log(boxPlay);
+
+const rules = document.querySelector('#rules')
+rules.addEventListener('click', ()=>{
+    let gide = document.querySelector('.gide');
+    gide.classList.add('ShowGide');
+})
+
+const backToGame = document.querySelector('#Back')
+backToGame.addEventListener('click', ()=>{
+    let gide = document.querySelector('.gide');
+    gide.classList.remove('ShowGide');
+})
+
 
 // last funtion will be created for more features,
 // transfore to new screen will one win!

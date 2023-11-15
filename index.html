@@ -8,31 +8,53 @@
 </head>
 <body>
     <h1>Tic Tac Toe</h2>
+        <br>
     <div class="center_part">
         <div class="player1">
             <img src="./5a26b2b6087102040a95d4c0.png" alt="" width="350 px">
-            <h2> I Will Win!</h2>
+            <h2 id="Name"> I Will Win!</h2>
         </div>
         <div class="content"> </div>
         <div class="player2">
-            <img src="./37d2dba59dcf2f84094b46b0b495e8d7.png" alt="player2" width="400px">
-            <h2>Let us do it!</h1>
+            <img src="./37d2dba59dcf2f84094b46b0b495e8d7.png" alt="player2" width="430px">
+            <br>
+            <br>
+            <br>
+            <h2  id="Name" >Let us do it!</h2>
         </div>
     </div>
     <br>
     <div id="status"> Play Now </div>
     <button id="restart"> Restart</button>
+    
+    <button id="rules">How To Play</button>
+    
     <div class="MessageWin">
         <h1 id="newMessage"> Your Win!</h1>
         <div class="stars">
-        <div id="done"> Well Done! You deserve success, always remember this<div>
+        <div id="done"> Well Done! You deserve success, always remember this</div>
     </div>
     <br>
     <br>
         <button id="again"> Play Again!</button>
-
     </div>
-    
+<div class="history">
+    <h4>Tic-Tac-Toe</h4>
+    <p>Tic-tac-toe is played on a three-by-three grid by two players, who alternately place the marks X and O in one of the nine spaces in the grid.</p>
+    <p>There is no universally agreed rule as to who plays first, but in this article the convention that X plays first is used.</p> 
+    <p>Players soon discover that the best play from both parties leads to a draw. Hence, tic-tac-toe is often played by young children who may not have discovered the optimal strategy.</p>
+    <p>Because of the simplicity of tic-tac-toe, it is often used as a pedagogical tool for teaching the concepts of good sportsmanship and the branch of artificial intelligence that deals with the searching of game trees. 
+        It is straightforward to write a computer program to play tic-tac-toe perfectly or to enumerate the 765 essentially different positions (the state space complexity) or the 26,830 possible games up to rotations and reflections (the game tree complexity) on this space. If played optimally by both players, the game always ends in a draw, making tic-tac-toe a futile game.</p>
+
+</div>
+
+<div class="gide">
+    <h2>Rules Of Tic-Tac-Toe Game</h2>
+    <p >The game is played on a grid that's 3 squares by 3 squares. You are X , your friend is O . Players take turns putting their marks in empty squares. The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner.</p>
+    <button id="Back">Back to Game</button>
+</div>
+
+
     <script src="./app.js"></script>
 </body>
 </html>
